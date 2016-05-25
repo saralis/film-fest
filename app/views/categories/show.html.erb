@@ -1,4 +1,7 @@
-<h1> Category Show </h1>
+<h1> <%= @category.name.capitalize %> </h1>
 
-
-<h2><%= @category.name.capitalize %></h2>
+<ul>
+  <% @films.each do | film | %>
+    <li><%= link_to film.name, film_path( film ) %></li>
+  <% end %>
+</ul>

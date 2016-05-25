@@ -4,15 +4,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
-    user = User.new(user_params)
+    @user = User.new(user_params)
     if user_params[ :password ] == user_params[ :password_confirmation ]
-      if user.save
-        session[:user_id] = user.id
+      if @user.save
+        session[:user_id] = @user.id
         redirect_to categories_path
+      else
+        @errors = @user.errors.full_messages
+        render template: '/users/new'
       end
     else
-      redirect_to '/signup'
+      @user.save
+      @errors = @user.errors.full_messages
+      render template: '/users/new'
     end
   end
 
@@ -21,9 +25,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :judge, :judge_token, :organizer, :organizer_token)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :judge, :organizer)
   end
 end
