@@ -1,0 +1,13 @@
+<%= form_for :user, url: '/users' do | f | %>
+  <%= f.text_field :first_name, placeholder: 'First Name' %><br>
+  <%= f.text_field :last_name, placeholder: 'Last Name' %><br>
+  <%= f.text_field :email, placeholder: 'Email' %><br>
+  <%= f.password_field :password, placeholder: 'Password' %><br>
+  <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %><br>
+
+  <%= fields_for :user do |permission_fields| %>
+    Judge?: <%= permission_fields.check_box :judge %><br>
+    Organizer?: <%= permission_fields.check_box :organizer %><br>
+  <% end %>
+  <%= f.submit 'Register' %>
+<% end %>
