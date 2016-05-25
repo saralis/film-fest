@@ -6,8 +6,8 @@
   <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %><br>
 
   <%= fields_for :user do |permission_fields| %>
-    Judge?: <%= permission_fields.check_box :judge %><br>
-    Organizer?: <%= permission_fields.check_box :organizer %><br>
+    Judge?: <%= permission_fields.check_box :judge, class: 'judge-check' %><br>
+    Organizer?: <%= permission_fields.check_box :organizer, class: 'organizer_check' %><br>
   <% end %>
   <%= f.submit 'Register' %>
 <% end %>
