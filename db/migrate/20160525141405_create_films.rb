@@ -3,6 +3,7 @@ class CreateFilms < ActiveRecord::Migration
     create_table :films do |t|
       t.string :name, null: false, index: true
       t.text :description, null: false
+      t.boolean :winner
       t.text :cast
       t.text :crew
       t.references :category, null: false, index: true

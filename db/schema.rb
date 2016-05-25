@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20160525141419) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
-    t.boolean  "winner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160525141419) do
   create_table "films", force: :cascade do |t|
     t.string   "name",        null: false
     t.text     "description", null: false
+    t.boolean  "winner"
     t.text     "cast"
     t.text     "crew"
     t.integer  "category_id", null: false
