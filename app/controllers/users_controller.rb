@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     user = User.new(user_params)
     if user_params[ :password ] == user_params[ :password_confirmation ]
       if user.save
+        if user_params[ :judge ] == '1'
+          user.update_attributes( judge: true )
+        end
         session[:user_id] = user.id
         redirect_to categories_path
       end
@@ -20,7 +22,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-
 
   private
   def user_params
