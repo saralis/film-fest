@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/films/:id/reviews/new' => 'reviews#new'
   post '/films/:id/reviews' => 'reviews#create'
+
   put '/reviews/:id/edit' => 'reviews#edit'
   delete '/reviews/:id' => 'reviews#destroy'
 
