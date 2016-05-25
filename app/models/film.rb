@@ -4,4 +4,10 @@ class Film < ActiveRecord::Base
   has_many :reviews
 
   validates :name, :description, presence: true
+
+  def self.search(search)
+    where("name ILIKE ?", "%#{search}")
+    where("description ILIKE ?", "%#{search}")
+  end
+
 end
