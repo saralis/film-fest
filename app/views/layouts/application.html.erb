@@ -8,17 +8,7 @@
 </head>
 
 <body>
-  <nav>
-    <%= form_tag(film_path, method: "get") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search films" %>
-    <%=submit_tag "Search" %>
-    <%end%>
-    <% if @films.present? %>
-    <%= render @films %>
-    <%else %>
-    <p>No films matching your term(s): <%=params[:search] %> </p>
-    <%end%>
-  </nav>
+
 
 <%= yield %>
 
