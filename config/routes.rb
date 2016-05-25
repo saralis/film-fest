@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'categories#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
