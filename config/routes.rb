@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'categories#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
   put '/comments/:id/edit' => 'comments#edit'
   delete '/comments/:id' => 'comments#destroy'
 
-  get '/films/:id/ratings/new' => 'ratings#new'
-  post '/films/:id/ratings' => 'ratings#create'
+  get '/films/:id/ratings/new' => 'ratings#new', as: :film_rating
+  post '/films/:id/ratings/new' => 'ratings#create'
 
   resources :categories, only: [:index, :show]
   resources :films, only: [:show]

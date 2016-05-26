@@ -7,6 +7,22 @@
 <%= @film.cast %><br>
 
 <%= @film.crew %><br>
+<%= @film.avg %>
+
+<p>Rate this film:</p>
+
+
+<%= form_for @film, method: :post, url: :film_rating do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :film_id, value: @film.id %>
+<%=f.select :value, options_for_select([5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1])%>
+
+<%=f.submit %>
+
+<%end%>
+
+<h2>Reviews for <%=@film.name %></h2>
+
 
 
 

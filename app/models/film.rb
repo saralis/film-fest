@@ -10,4 +10,11 @@ class Film < ActiveRecord::Base
     where("description ILIKE ?", "%#{search}")
   end
 
+  def avg
+    if self.ratings.length >= 1
+      # self.ratings.map {|rating| rating.value}
+     return self.ratings.inject { | sum, elm | sum + elm.value } / self.ratings.length
+    end
+  end
+
 end
