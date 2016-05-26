@@ -38,15 +38,26 @@
 <h3> <%= @film.name %>'s Reviews: </h3>
 
 <% @reviews.each do |review| %>
-
   <ul> Review Title: <%= review.title %> </ul>
   <ul> Review Body: <%= review.body %> </ul>
+
   <% if logged_in? %>
     <%= link_to 'Create Comment', "/films/#{@film.id}/comments/new" %>
   <% end %>
 
+
   <% review.comments.each do |comment| %>
-    <ul> Review Comment: <%= comment.body %> </ul>
+    <ul>
+      <li> comment: <%= comment.body %> </li>
+      <% if comment.user_id == current_user.id %>
+        <li><%=link_to 'edit your comment', "reviews/#{review.id}/comments/#{comment.id}/edit" %></li>
+      <%end%>
+      <li><%=form_for comment, :url =>{:action =>"update", :method=> "patch", :controller => "comments"} do |f| %>
+          <%=f.hidden_field :flag, value: true %>
+          <%=f.hidden_field :comment_id, value: comment.id %>
+          <%=f.submit %></li>
+      <%end%>
+    </ul>
   <% end %>
 <% end %>
 

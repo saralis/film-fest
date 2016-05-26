@@ -14,13 +14,16 @@ Rails.application.routes.draw do
 
   get '/films/:id/reviews/new' => 'reviews#new'
   post '/films/:id/reviews' => 'reviews#create'
+  get '/films/:id/reviews/edit' => 'reviews#edit'
+  post '/films/:id/reviews/edit' => 'reviews#edit'
 
   put '/reviews/:id/edit' => 'reviews#edit'
   delete '/reviews/:id' => 'reviews#destroy'
 
-  get '/films/:id/comments/new' => 'comments#new'
-  post '/films/:id/comments' => 'comments#create'
-  put '/comments/:id/edit' => 'comments#edit'
+  get '/reviews/:id/comments/new' => 'comments#new'
+  post '/reviews/:id/comments' => 'comments#create'
+  get '/reviews/:id/comments/:id/edit' => 'comments#edit'
+  patch '/reviews/:id/comments/:id/update' => 'comments#update'
   delete '/comments/:id' => 'comments#destroy'
 
   get '/films/:id/ratings/new' => 'ratings#new', as: :film_rating

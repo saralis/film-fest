@@ -1,18 +1,34 @@
 class CommentsController < ApplicationController
 
   def new
+    @review = Review.find_by(id: params[:id])
     @comment = Comment.new(params[:comment])
-    @review_id = params[:review_id]
   end
 
   def create
-    @film = Film.find(params[:id])
-    @comment = Comment.new(params[:body])
+    @comment = Comment.create!(comments_params)
+    @review = Review.find_by(id: params[:id])
+    @film = @review.film
+    redirect_to film_path(@film)
+  end
 
-    if @comment.save
-      redirect_to film_path
-    else
-      render template: '/comments/new'
-    end
+  def update
+    @comment = Comment.find_by(id: params[:comment][:comment_id])
+    @film = @comment.review.film
+    @comment.update_attributes(flag: true)
+    redirect_to film_path(@film)
+  end
+
+  def edit
+
+    @comment = Comment.find_by(id: params[:id])
+
+    @review = @comment.review
+  end
+
+
+ private
+  def comments_params
+    params.require(:comment).permit(:body, :user_id, :review_id)
   end
 end
