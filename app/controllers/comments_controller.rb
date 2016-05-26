@@ -13,9 +13,10 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find_by(id: params[:comment][:comment_id])
+    @review = Review.find_by(id: params[:comment][:review_id])
+    @comment = Comment.find_by(id: params[:id]) || Comment.find_by( id: params[ :comment ][ :comment_id ] )
     @film = @comment.review.film
-    @comment.update_attributes(flag: true)
+    @comment.update_attributes(comments_params)
     redirect_to film_path(@film)
   end
 
@@ -29,6 +30,6 @@ class CommentsController < ApplicationController
 
  private
   def comments_params
-    params.require(:comment).permit(:body, :user_id, :review_id)
+    params.require(:comment).permit(:body, :user_id, :review_id, :flag)
   end
 end
