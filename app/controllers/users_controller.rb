@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     else
       @error = 'Your token is either no longer valid or incorrect!'
       render template: '/users/secret'
-    endgit
+    end
   end
 
   def create_judge
@@ -49,9 +49,14 @@ class UsersController < ApplicationController
         update_token.update_attributes( active: false )
         session[ :user_id ] = @user.id
         redirect_to root_path
+      else
+        @errors = @user.errors.full_messages
+        render template: '/users/new_judge'
       end
     else
+      redirect_to root_path
     end
+  end
 
   def judges
     @judges=User.where(:judge => true)

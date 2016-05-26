@@ -1,3 +1,11 @@
+<% if @errors %>
+  <ul>
+    <% @errors.each do | error | %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for :user, url: '/users/judge' do | f | %>
   <%= f.hidden_field :judge_token, value: @token %>
   <%= f.text_field :first_name, placeholder: 'First Name' %><br>

@@ -1,0 +1,12 @@
+<ul>
+  <% @users.each do | user | %>
+    <% if !user.organizer %>
+      <li><%= user.last_name %>, <%= user.first_name %></li>
+      <% if !user.judge %>
+        <%= render template: '/dashboard/_judge_form', locals: { user: user } %>
+      <% else %>
+        <%= render template: '/dashboard/_delete_judge_form', locals: { user: user } %>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

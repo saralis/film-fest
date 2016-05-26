@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   post '/tokens' => 'tokens#create'
   get '/tokens' => 'tokens#show'
 
+  get '/dashboard/users' => 'dashboard#users'
+  post '/dashboard' => 'dashboard#make_judge'
+  delete '/dashboard' => 'dashboard#destroy_judge'
+
   resources :categories, only: [:index, :show]
   resources :films, only: [:show]
   resources :users, only: [:index, :new, :create, :show]
