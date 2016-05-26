@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 
+
   def new
     @film = Film.find(params[:id])
     @review = Review.new
@@ -16,6 +17,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @comments = Comment.where( comment_id: @comment.id )
   end
+
 
 
 private
