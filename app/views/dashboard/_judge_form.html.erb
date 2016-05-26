@@ -1,0 +1,4 @@
+<%= form_for :dashboard_judge, url: '/dashboard' do | f | %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <%= f.submit 'Make Judge' %>
+<% end %>
