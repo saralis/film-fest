@@ -14,10 +14,7 @@
   <% if logged_in? %>
     <a href="/">Home</a>
     <% if current_user.organizer %>
-      <a href="/tokens/gen">Generate New Judge Token</a>
-      <a href="/tokens">View All Active Tokens</a>
-      <a href="/dashboard/users">View All Users</a>
-      <a href="/dashboard/categories">View All Categories</a>
+      <a href="/dashboard">Dashboard</a>
     <% end %>
     <a href="/logout">Logout</a>
   <% else %>
