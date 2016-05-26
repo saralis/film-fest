@@ -1,4 +1,8 @@
-<h1> User Show </h1>
+<h2><%= @user.first_name%> <%= @user.last_name %>'s Profile Page</h2>
 
-
-<%= @user.first_name %> <%= @user.last_name %>
+<% if current_user.judge? == true %>
+  <h2> Films I Have Rated </h2>
+  <% current_user.ratings.each do |rating| %>
+    <%= link_to rating.film, rating_path(@rating) %>
+  <% end %>
+<% end %>
