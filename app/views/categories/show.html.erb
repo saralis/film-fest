@@ -1,8 +1,15 @@
 <div id="cat_idx_container"><h1> <%= @category.name.upcase %> </h1>
 
+
 <ul>
-  <% @films.each do | film | %>
-    <li><%= link_to film.name, film_path( film ) %></li>
-  <% end %>
+  <% @rated_films.each do |film| %>
+  <li><%= link_to film.name, film_path( film ) %></li>
+      <li>Audience Rating: <%= film.user_avg %></li>
+      <%end%>
+
+    <%@non_rated_films.each do | film | %>
+      <li><%= link_to film.name, film_path( film ) %></li>
+    <% end %>
 </ul>
 </div>
+

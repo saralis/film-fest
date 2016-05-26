@@ -54,7 +54,7 @@
 
   <% if logged_in? %>
     <%= link_to 'Create Comment', "/reviews/#{review.id}/comments/new" %>
-  <% end %>
+  <% end %><br>
 
 
   <% review.comments.each do |comment| %>
@@ -74,4 +74,6 @@
 
 <% if logged_in? %>
   <%= link_to 'Create a new review', "/films/#{@film.id}/reviews/new" %>
-<% end %>
+<% end %><br>
+
+<%= link_to 'Back to Category list', "/categories/#{@film.category_id}"%>

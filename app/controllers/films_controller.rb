@@ -8,7 +8,7 @@ class FilmsController < ApplicationController
   #   end
   #   @film = Film.find(params[:id])
   # end
-
+    # @category = Category.find(params[:id])
     @film = Film.find(params[:id])
     @reviews = Review.where( film_id: @film.id )
   end
