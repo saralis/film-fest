@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
   def secret
   end
 
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
     else
       @error = 'Your token is either no longer valid or incorrect!'
       render template: '/users/secret'
-    end
+    endgit
   end
 
   def create_judge
@@ -51,6 +52,10 @@ class UsersController < ApplicationController
       end
     else
     end
+
+  def judges
+    @judges=User.where(:judge => true)
+
   end
 
   private
