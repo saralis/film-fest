@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   post '/rate' => 'rater#create', :as => 'rate'
   root 'categories#index'
+
+  get '/signup/judge_token_j' => 'users#secret'
+  post '/signup/judge/l_step' => 'users#new_judge'
+  post '/users/judge' => 'users#create_judge'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
@@ -21,6 +26,10 @@ Rails.application.routes.draw do
   get '/films/:id/ratings/new' => 'ratings#new', as: :film_rating
   post '/films/:id/ratings/new' => 'ratings#create'
 
+  get '/tokens/gen' => 'tokens#new'
+  post '/tokens' => 'tokens#create'
+  get '/tokens' => 'tokens#show'
+
   resources :categories, only: [:index, :show]
   resources :films, only: [:show]
   resources :users, only: [:index, :new, :create, :show]
@@ -29,7 +38,6 @@ Rails.application.routes.draw do
       get :judges
 
   end
-end
 
 
 

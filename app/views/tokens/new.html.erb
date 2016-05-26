@@ -1,0 +1,10 @@
+<% if @error %>
+  <p>
+    <%= @error %>
+  </p>
+<% end %>
+
+
+<%= form_for :token, url: '/tokens' do | f | %>
+  <%= f.submit 'Generate Judge Token' %>
+<% end %>

@@ -9,8 +9,17 @@
 
 <body>
 
+  <% if logged_in? %>
+    <a href="/">Home</a>
+    <a href="/tokens/gen">Generate New Judge Token</a>
+    <a href="/tokens">View All Active Tokens</a>
+    <a href="/logout">Logout</a>
+  <% else %>
+    <a href="/login">Login</a>
+  <% end %>
 
 <%= yield %>
+
 
 </body>
 </html>
