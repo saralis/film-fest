@@ -1,6 +1,12 @@
 <h1> Films Show </h1>
 
-<h2> <%= @film.name %> </h2><br>
+<h2> <%= @film.name %> </h2>
+
+<% if @film.live %>
+  <p>
+    Winner Of The <%= @film.category.name.capitalize %> Category
+  </p>
+<% end %>
 
 <%= @film.description %>
 

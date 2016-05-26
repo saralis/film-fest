@@ -4,6 +4,7 @@ class CreateFilms < ActiveRecord::Migration
       t.string :name, null: false, index: true
       t.text :description, null: false
       t.boolean :winner
+      t.boolean :live
       t.text :cast
       t.text :crew
       t.references :category, null: false, index: true

@@ -19,4 +19,18 @@
       <%= f.submit 'Calculate Winner' %>
     <% end %>
   <% end %>
+
+  <% if !@films.any? { |film| film.live } %>
+    <%= form_for :display_winner, url: "/films/#{ @films.find_by( winner: true ).id }/live" do | f | %>
+      <%= f.hidden_field :film_id, value: @films.find_by( winner: true ).id %>
+      <%= f.hidden_field :live, value: true %>
+      <%= f.submit 'Show Winner Live' %>
+    <% end %>
+  <% else %>
+    <%= form_for :display_winner, url: "/films/#{ @films.find_by( winner: true ).id }/live" do | f | %>
+      <%= f.hidden_field :film_id, value: @films.find_by( winner: true ).id %>
+      <%= f.hidden_field :live, value: false %>
+      <%= f.submit 'Hide Winner Live' %>
+    <% end %>
+  <% end %>
 <% end %>
