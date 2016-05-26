@@ -2,12 +2,14 @@
 
 
 <ul>
-  <% @films.each do |film| %>
-    <li><%= link_to film.name, film_path( film ) %></li>
-      <% if film.user_avg && film.user_avg > 0 %>
+  <% @rated_films.each do |film| %>
+  <li><%= link_to film.name, film_path( film ) %></li>
       <li>Audience Rating: <%= film.user_avg %></li>
-      <% end %>
-  <% end %>
+      <%end%>
+
+    <%@non_rated_films.each do | film | %>
+      <li><%= link_to film.name, film_path( film ) %></li>
+    <% end %>
 </ul>
 </div>
 

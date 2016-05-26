@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(version: 20160525162308) do
   add_index "films", ["name"], name: "index_films_on_name", using: :btree
 
   create_table "ratings", force: :cascade do |t|
-    t.integer  "value",      null: false
-    t.integer  "user_id",    null: false
-    t.integer  "film_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "value",      default: 0.0, null: false
+    t.integer  "user_id",                  null: false
+    t.integer  "film_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "ratings", ["film_id"], name: "index_ratings_on_film_id", using: :btree
