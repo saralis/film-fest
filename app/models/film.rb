@@ -10,4 +10,11 @@ class Film < ActiveRecord::Base
     where("description ILIKE ?", "%#{search}")
   end
 
+  def avg
+    if self.ratings.length >= 1
+     ((self.ratings.map{|rating| rating.value}.reduce(:+).to_f) / (self.ratings.length).to_f).round(2)
+    end
+  end
+
+
 end

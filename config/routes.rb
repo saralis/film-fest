@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'categories#index'
 
   get '/signup/judge_token_j' => 'users#secret'
@@ -22,8 +23,8 @@ Rails.application.routes.draw do
   put '/comments/:id/edit' => 'comments#edit'
   delete '/comments/:id' => 'comments#destroy'
 
-  get '/films/:id/ratings/new' => 'ratings#new'
-  post '/films/:id/ratings' => 'ratings#create'
+  get '/films/:id/ratings/new' => 'ratings#new', as: :film_rating
+  post '/films/:id/ratings/new' => 'ratings#create'
 
   get '/tokens/gen' => 'tokens#new'
   post '/tokens' => 'tokens#create'
@@ -39,9 +40,9 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :judges
-    end
-  end
 
+  end
+end
 
 
 
