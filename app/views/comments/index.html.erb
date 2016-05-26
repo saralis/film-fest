@@ -1,0 +1,11 @@
+<h1>Comments flagged as inappropriate </h1>
+
+<% @comments.each do |review| %>
+  <ul>
+    <li><%=comment.text%></li>
+    <li>left by: <%=comment.user%></li>
+    <li><%=form_for comment, method: :delete do |f| %>
+      <%= f.hidden_field :comment_id, value: comment.id %>
+      <%= f.submit 'delete this comment' %><li>
+  </ul>
+<%end%>
