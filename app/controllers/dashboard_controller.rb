@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   include TokensHelper
+  include CategoriesHelper
   def users
     @users = User.order( last_name: :ASC )
   end
@@ -24,5 +25,19 @@ class DashboardController < ApplicationController
     user = User.find_by( id: params[ :dashboard_judge ][ :user_id ] )
     user.update_attributes( judge: false, judge_token: nil )
     redirect_to '/dashboard/users'
+  end
+
+  def categories
+    @categories = Category.all
+  end
+
+  def category_films
+    @films = Film.where( category_id: params[ :id ] )
+  end
+
+  def category_winner
+    @category = Category.find_by( id: params[ :winner ][ :category_id ] )
+    @winner = determine_winner( @category )
+    Film.find_by( name: @winner ).update_attributes( winner: true )
   end
 end

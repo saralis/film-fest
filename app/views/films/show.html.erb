@@ -7,11 +7,10 @@
 <%= @film.cast %><br>
 
 <%= @film.crew %><br>
+
 <% if @film.ratings %>
-<p>Average audience rating:<%= @film.avg %></p>
-<%end%>
-<% if @judge_ratings %>
-<p>Average judge rating:<%= @judge_ratings.avg %></p>
+  <p>Average audience rating:<%= @film.user_avg %></p>
+  <p>Average judge rating:<%= @film.judge_avg %></p>
 <%end%>
 
 <p>Rate this film:</p>
@@ -45,7 +44,3 @@
 <% end %>
 
 <%= link_to 'Create a new review', "/films/#{@film.id}/reviews/new" %>
-
-
-
-

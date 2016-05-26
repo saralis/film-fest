@@ -1,0 +1,7 @@
+<h1>Categories</h1>
+
+<ul>
+  <% @categories.each do | category | %>
+    <li><a href="/dashboard/categories/<%= category.id %>"><%= category.name %></a></li>
+  <% end %>
+</ul>

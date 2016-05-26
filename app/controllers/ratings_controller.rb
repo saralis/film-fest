@@ -8,9 +8,6 @@ class RatingsController < ApplicationController
     @film = Film.find_by(id: params[:film][:film_id])
     Rating.create(custom_params)
     redirect_to film_path(@film)
-    @judge_ratings = @film.ratings.select{ |rating| rating.user.judge}
-
-
   end
 
   private
