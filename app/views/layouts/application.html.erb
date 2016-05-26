@@ -5,10 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-
+<nav>
   <% if logged_in? %>
     <a href="/">Home</a>
     <% if current_user.organizer %>
@@ -22,6 +24,11 @@
     <a href="/login">Login</a>
     <a href="/signup">Sign up</a>
   <% end %>
+  <h3 id="title"> LES FILM FEST 2016</h3>
+</nav>
+<div id="border">
+  </div>
+
 
 <%= yield %>
 
