@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
 
+  def index
+    @comments = Comment.where(flag:true)
+  end
+
   def new
     @review = Review.find_by(id: params[:id])
     @comment = Comment.new(params[:comment])
