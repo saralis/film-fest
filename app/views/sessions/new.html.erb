@@ -1,0 +1,11 @@
+<% if @error %>
+  <p>
+    <%= @error %>
+  </p>
+<% end %>
+
+<%= form_for :user, url: '/login' do | f | %>
+  <%= f.text_field :email, placeholder: 'email' %><br>
+  <%= f.password_field :password, placeholder: 'password' %><br>
+  <%= f.submit 'Login' %>
+<% end %>
