@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   get '/films/:id/ratings/new' => 'ratings#new', as: :film_rating
   post '/films/:id/ratings/new' => 'ratings#create'
+  post '/films/:id/live' => 'films#live'
 
   get '/tokens/gen' => 'tokens#new'
   post '/tokens' => 'tokens#create'
