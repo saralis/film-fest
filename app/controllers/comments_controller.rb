@@ -1,5 +1,13 @@
 class CommentsController < ApplicationController
 
+  def flagged
+    if current_user.organizer
+      @comments = Comment.where(flag:true)
+    else
+      redirect_to root_path
+    end
+  end
+
   def new
     @review = Review.find_by(id: params[:id])
     @comment = Comment.new(params[:comment])
@@ -20,12 +28,12 @@ class CommentsController < ApplicationController
     redirect_to film_path(@film)
   end
 
-  def edit
-
-    @comment = Comment.find_by(id: params[:id])
-
-    @review = @comment.review
+  def destroy
+    @comment = Comment.find_by(id: params[:comment][:comment_id])
+    @comment.destroy
+    redirect_to comments_flagged_path
   end
+
 
 
  private

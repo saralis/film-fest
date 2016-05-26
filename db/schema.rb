@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160525162308) do
     t.string   "name",        null: false
     t.text     "description", null: false
     t.boolean  "winner"
+    t.boolean  "live"
     t.text     "cast"
     t.text     "crew"
     t.integer  "category_id", null: false

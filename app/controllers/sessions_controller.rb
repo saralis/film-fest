@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
     user = User.find_by( email: params[ :user ][ :email ] )
     if user && user.authenticate( params[ :user ][ :password ] )
       session[ :user_id ] = user.id
-      redirect_to root_path
+      if user.organizer
+        redirect_to dashboard_path
+      else
+        redirect_to root_path
+      end
     else
       @error = 'You have entered either an invalid email or password. Please try again!'
       render template: '/sessions/new'

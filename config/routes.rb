@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   get '/films/:id/ratings/new' => 'ratings#new', as: :film_rating
   post '/films/:id/ratings/new' => 'ratings#create'
+  post '/films/:id/live' => 'films#live'
 
   get '/tokens/gen' => 'tokens#new'
   post '/tokens' => 'tokens#create'
@@ -37,9 +38,13 @@ Rails.application.routes.draw do
   post '/dashboard' => 'dashboard#make_judge'
   delete '/dashboard' => 'dashboard#destroy_judge'
 
+  get '/dashboard' => 'dashboard#index'
   get '/dashboard/categories' => 'dashboard#categories'
   get '/dashboard/categories/:id' => 'dashboard#category_films'
   post '/dashboard/categories' => 'dashboard#category_winner'
+
+  get '/comments/flagged' => 'comments#flagged'
+  delete '/comments' => 'comments#destroy'
 
   resources :categories, only: [:index, :show]
   resources :films, only: [:show]

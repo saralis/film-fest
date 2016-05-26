@@ -1,6 +1,12 @@
 <h1> Films Show </h1>
 
-<h2> <%= @film.name %> </h2><br>
+<h2> <%= @film.name %> </h2>
+
+<% if @film.live %>
+  <p>
+    Winner Of The <%= @film.category.name.capitalize %> Category
+  </p>
+<% end %>
 
 <%= @film.description %>
 
@@ -40,6 +46,11 @@
 <% @reviews.each do |review| %>
   <ul> Review Title: <%= review.title %> </ul>
   <ul> Review Body: <%= review.body %> </ul>
+  <ul> Left by: <%=review.user.first_name %> <%=review.user.last_name %>
+    <% if review.user.judge %>
+    &#9733;<i>Judge review</i>
+    <%end%>
+  </ul>
 
   <% if logged_in? %>
     <%= link_to 'Create Comment', "/reviews/#{review.id}/comments/new" %>
