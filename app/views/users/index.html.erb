@@ -1,0 +1,9 @@
+<h1> Judges Index </h1>
+
+<% if @judges %>
+  <ul>
+      <% @judges.each do |judge| %>
+        <li><%= judge.first_name %> <%= judge.last_name %> </li>
+      <% end %>
+    </ul>
+  <% end %>

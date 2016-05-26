@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   root 'categories#index'
+
+  get '/signup/judge_token_j' => 'users#secret'
+  post '/signup/judge/l_step' => 'users#new_judge'
+  post '/users/judge' => 'users#create_judge'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
@@ -20,9 +25,18 @@ Rails.application.routes.draw do
   get '/films/:id/ratings/new' => 'ratings#new'
   post '/films/:id/ratings' => 'ratings#create'
 
+  get '/tokens/gen' => 'tokens#new'
+  post '/tokens' => 'tokens#create'
+  get '/tokens' => 'tokens#show'
+
   resources :categories, only: [:index, :show]
   resources :films, only: [:show]
   resources :users, only: [:index, :new, :create, :show]
+  resources :users do
+    collection do
+      get :judges
+    end
+  end
 
 
 

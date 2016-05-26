@@ -6,9 +6,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, null: false, index: true, unique: true
       t.string :password_digest
       t.boolean :judge
-      t.string :judge_token, unique: true
+      t.string :judge_token
       t.boolean :organizer
-      t.string :organizer_token, unique: true
+      t.string :organizer_token
 
       t.timestamps null: false
     end

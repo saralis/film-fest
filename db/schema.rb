@@ -75,10 +75,13 @@ ActiveRecord::Schema.define(version: 20160525162308) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "tokens", force: :cascade do |t|
-    t.integer  "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "token",                     null: false
+    t.boolean  "active",     default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
+
+  add_index "tokens", ["token"], name: "index_tokens_on_token", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      null: false
