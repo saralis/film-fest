@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :judges
-    end
+
   end
 end
 
