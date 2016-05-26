@@ -1,0 +1,22 @@
+<% if @films.empty? %>
+  <h1>Sorry, this category has no films. Please go back <%= link_to 'Here', dashboard_categories_path %></h1>
+<% else %>
+  <h1>Films For Category: <%= Category.find_by( id: @films.first.category_id ).name.capitalize %></h1>
+
+  <ul>
+    <% @films.each do | film | %>
+      <% if film.winner %>
+        <li><%= film.name %> - Winner</li>
+      <% else %>
+        <li><%= film.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <% if !@films.any? { |film| film.winner } %>
+    <%= form_for :winner, url:'/dashboard/categories' do | f | %>
+      <%= f.hidden_field :category_id, value: @films.first.category_id %>
+      <%= f.submit 'Calculate Winner' %>
+    <% end %>
+  <% end %>
+<% end %>
