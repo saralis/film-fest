@@ -1,12 +1,30 @@
 <h1> Films Show </h1>
 
-<%= @film.name %><br>
+<h2> <%= @film.name %> </h2><br>
 
 <%= @film.description %>
 
 <%= @film.cast %><br>
 
 <%= @film.crew %><br>
+
+
+
+<h3> <%= @film.name %>'s Reviews: </h3>
+
+<% @reviews.each do |review| %>
+
+  <ul> Review Title: <%= review.title %> </ul>
+  <ul> Review Body: <%= review.body %> </ul>
+  <%= link_to 'Create Comment', "/films/#{@film.id}/comments/new" %>
+
+  <% review.comments.each do |comment| %>
+    <ul> Review Comment: <%= comment.body %> </ul>
+  <% end %>
+<% end %>
+
+<%= link_to 'Create a new review', "/films/#{@film.id}/reviews/new" %>
+
 
 
 
