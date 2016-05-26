@@ -1,0 +1,16 @@
+<h1>Comments flagged as inappropriate </h1>
+
+<% if @comments.length > 0 %>
+  <% @comments.each do | comment | %>
+    <ul>
+      <li><%= comment.body %></li>
+      <li>left by: <%= comment.user.first_name %> <%= comment.user.last_name %></li>
+      <%= form_for :comment, url: '/comments', method: 'delete' do | f | %>
+        <%= f.hidden_field :comment_id, value: comment.id %>
+        <%= f.submit 'delete this comment' %>
+      <% end %>
+    </ul>
+  <%end%>
+<% else %>
+  <h3>You don't have any flagged comments now</h3>
+<% end %>

@@ -1,6 +1,13 @@
 class DashboardController < ApplicationController
   include TokensHelper
   include CategoriesHelper
+
+  def index
+    if !logged_in? || ( logged_in? && !current_user.organizer )
+      redirect_to root_path
+    end
+  end
+
   def users
     if logged_in? && current_user.organizer
       @users = User.order( last_name: :ASC )

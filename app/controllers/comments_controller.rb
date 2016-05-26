@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
 
-  def index
-    @comments = Comment.where(flag:true)
+  def flagged
+    if current_user.organizer
+      @comments = Comment.where(flag:true)
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -27,7 +31,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find_by(id: params[:comment][:comment_id])
     @comment.destroy
-    redirect_to comments_path(@comment)
+    redirect_to comments_flagged_path
   end
 
 
