@@ -20,12 +20,12 @@ class CommentsController < ApplicationController
     redirect_to film_path(@film)
   end
 
-  def edit
-
-    @comment = Comment.find_by(id: params[:id])
-
-    @review = @comment.review
+  def destroy
+    @comment = Comment.find_by(id: params[:comment][:comment_id])
+    @comment.destroy
+    redirect_to comments_path(@comment)
   end
+
 
 
  private
