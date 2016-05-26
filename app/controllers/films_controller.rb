@@ -13,4 +13,5 @@ class FilmsController < ApplicationController
     @film = Film.find(params[:id])
     @reviews = Review.where( film_id: @film.id )
   end
+
 end
