@@ -7,7 +7,12 @@
 <%= @film.cast %><br>
 
 <%= @film.crew %><br>
-<%= @film.avg %>
+<% if @film.ratings %>
+<p>Average audience rating:<%= @film.avg %></p>
+<%end%>
+<% if @judge_ratings %>
+<p>Average judge rating:<%= @judge_ratings.avg %></p>
+<%end%>
 
 <p>Rate this film:</p>
 
@@ -15,7 +20,7 @@
 <%= form_for @film, method: :post, url: :film_rating do |f| %>
 <%= f.hidden_field :user_id, value: current_user.id %>
 <%= f.hidden_field :film_id, value: @film.id %>
-<%=f.select :value, options_for_select([5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1])%>
+<%= f.select :ratings, [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1], :prompt => 'Select One' %>
 
 <%=f.submit %>
 

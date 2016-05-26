@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       get :judges
 
   end
-
+end
 
 
 
