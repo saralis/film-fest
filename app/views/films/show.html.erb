@@ -7,24 +7,28 @@
 <%= @film.cast %><br>
 
 <%= @film.crew %><br>
+
 <% if @film.ratings %>
-<p>Average audience rating:<%= @film.avg %></p>
-<%end%>
-<% if @judge_ratings %>
-<p>Average judge rating:<%= @judge_ratings.avg %></p>
+  <p>Average audience rating:<%= @film.user_avg %></p>
+  <p>Average judge rating:<%= @film.judge_avg %></p>
 <%end%>
 
 <p>Rate this film:</p>
 
+<% if logged_in? %>
+  <%= form_for @film, method: :post, url: :film_rating do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :film_id, value: @film.id %>
+  <%= f.select :ratings, [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1], :prompt => 'Select One' %>
 
-<%= form_for @film, method: :post, url: :film_rating do |f| %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.hidden_field :film_id, value: @film.id %>
-<%= f.select :ratings, [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1], :prompt => 'Select One' %>
+  <%=f.submit %>
 
-<%=f.submit %>
-
-<%end%>
+  <%end%>
+<% else %>
+  <p>
+    Please <a href="/signup">Signup</a> or <a href="/login">Login</a> to rate this film
+  </p>
+<% end %>
 
 <h2>Reviews for <%=@film.name %></h2>
 
@@ -37,15 +41,15 @@
 
   <ul> Review Title: <%= review.title %> </ul>
   <ul> Review Body: <%= review.body %> </ul>
-  <%= link_to 'Create Comment', "/films/#{@film.id}/comments/new" %>
+  <% if logged_in? %>
+    <%= link_to 'Create Comment', "/films/#{@film.id}/comments/new" %>
+  <% end %>
 
   <% review.comments.each do |comment| %>
     <ul> Review Comment: <%= comment.body %> </ul>
   <% end %>
 <% end %>
 
-<%= link_to 'Create a new review', "/films/#{@film.id}/reviews/new" %>
-
-
-
-
+<% if logged_in? %>
+  <%= link_to 'Create a new review', "/films/#{@film.id}/reviews/new" %>
+<% end %>
