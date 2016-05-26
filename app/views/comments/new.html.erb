@@ -1,5 +1,15 @@
 <h1>New comment</h1>
 
-<%= render 'form' %>
+<span>
+ <%= form_for @comment, :url => { :action => "create" } do |f| %>
 
-<%= link_to 'Back', comments_path %>
+<p>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+</p>
+
+  <%= f.submit %>
+<% end %>
+</span>
+
+
