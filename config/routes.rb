@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get '/reviews/:id/comments/new' => 'comments#new'
   post '/reviews/:id/comments' => 'comments#create'
-  get '/reviews/:id/comments/:id/edit' => 'comments#edit'
+  get '/films/reviews/:id/comments/:id/edit' => 'comments#edit'
   patch '/reviews/:id/comments/:id/update' => 'comments#update'
   delete '/comments/:id' => 'comments#destroy'
 
