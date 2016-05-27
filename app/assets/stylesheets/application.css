@@ -21,10 +21,9 @@ a {
     margin-top: .5em;
     font-size: 3.5em;
     opacity: .4em;
-    transition: 2s ease; }
+    transition: opacity 2s ease; }
     #cat_container ul li :hover {
-      opacity: 1;
-      margin-left: 2%; }
+      opacity: 1; }
     #cat_container ul li a {
       width: auto;
       text-align: right;
@@ -36,15 +35,17 @@ nav {
   height: 100px;
   background-color: #ff0077;
   padding-top: 2%;
-  z-index: -1; }
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em; }
   nav a {
     color: #fff;
     padding: 2%; }
   nav h3 {
     width: auto;
-    color: #fff;
+    color: #efdede;
     text-align: right;
-    padding-right: 2%;
+    margin-top: -1%;
+    font-family: 'BenchNine', sans-serif;
     font-size: 2.5em; }
 
 #cat_idx_container {
@@ -74,6 +75,24 @@ footer {
   color: #fff;
   font-size: .8em;
   text-align: center;
-  margin-left: 80%; }
+  margin-left: 85%;
+  padding-bottom: 3%; }
+
+#container form {
+  margin-top: 1%;
+  text-align: center; }
+  #container form input {
+    font-size: 1.2em;
+    width: 20%;
+    padding: 1%;
+    border-radius: 5px;
+    margin: .5em;
+    text-align: center; }
+  #container form input[type='submit'] {
+    width: 20%;
+    background-color: #ffe500;
+    border: 1px solid #ffe500; }
+    #container form input[type='submit'] :hover {
+      background-color: #e8d992; }
 
 /*# sourceMappingURL=application.css.map */
