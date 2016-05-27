@@ -2,13 +2,23 @@
 
 <h2> <%= @film.name %> </h2>
 
+<p>
+  <% if @stars == nil %>
+      &#9734;
+  <% else %>
+    <% @stars.times do %>
+      &#11088;
+    <% end %>
+  <% end %>
+</p>
+
 <% if @film.live %>
   <p>
     Winner Of The <%= @film.category.name.capitalize %> Category
   </p>
 <% end %>
 
-<%= @film.description %>
+<%= @film.description.scan(/[A-Za-z. 0-9]/).join() %>
 
 <%= @film.cast %><br>
 
