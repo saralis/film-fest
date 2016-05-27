@@ -43,34 +43,28 @@
 
 <h3> <%= @film.name %>'s Reviews: </h3>
 
-<% @reviews.each do |review| %>
-  <ul> Review Title: <%= review.title %> </ul>
-  <ul> Review Body: <%= review.body %> </ul>
-  <ul> Left by: <%=review.user.first_name %> <%=review.user.last_name %>
-    <% if review.user.judge %>
-    &#9733;<i>Judge review</i>
-    <%end%>
-  </ul>
-
-  <% if logged_in? %>
-    <%= link_to 'Create Comment', "/reviews/#{review.id}/comments/new" %>
-  <% end %><br>
-
-
-  <% review.comments.each do |comment| %>
-    <ul>
-      <li> comment: <%= comment.body %> </li>
-      <% if comment.user_id == current_user.id %>
-        <li><%=link_to 'edit your comment', "reviews/#{review.id}/comments/#{comment.id}/edit" %></li>
+<div id="review-container">
+  <% @reviews.each do |review| %>
+    <h1> Review Title: <%= review.title %> </h1>
+    <h3> Review Body: <%= review.body %> </h3>
+    <p> Left by: <%=review.user.first_name %> <%=review.user.last_name %>
+      <% if review.user.judge %>
+        &#9733;<i>Judge review</i>
       <%end%>
-      <li><%=form_for comment, :url =>{:action =>"update", :method=> "patch", :controller => "comments"} do |f| %>
-          <%=f.hidden_field :flag, value: true %>
-          <%=f.hidden_field :comment_id, value: comment.id %>
-          <%=f.submit 'Flag as Inappropriate' %></li>
-      <%end%>
-    </ul>
+    </p>
+
+    <div class="outside-comments-container">
+      <% review.comments.each do |comment| %>
+        <%= render template: '/comments/_all_comments', locals: { comment: comment, review: review } %>
+      <% end %>
+
+      <% if logged_in? %>
+        <%= link_to 'Create Comment', "/reviews/#{review.id}/comments/new", class: 'new-comment' %>
+      <% end %><br>
+    </div>
   <% end %>
-<% end %>
+</div>
+
 
 <% if logged_in? %>
   <%= link_to 'Create a new review', "/films/#{@film.id}/reviews/new" %>

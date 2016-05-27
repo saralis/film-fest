@@ -1,0 +1,11 @@
+<span>
+   <%= form_for @comment, :url => { :action => "create" } do |f| %>
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :review_id, value: @review.id %>
+    </p>
+    <%= f.submit %>
+  <% end %>
+</span>

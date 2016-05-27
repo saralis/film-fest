@@ -11,13 +11,22 @@ class CommentsController < ApplicationController
   def new
     @review = Review.find_by(id: params[:id])
     @comment = Comment.new(params[:comment])
+
+    if request.xhr?
+      render template: '/comments/_new_form', layout: false
+    end
   end
 
   def create
     @comment = Comment.create!(comments_params)
     @review = Review.find_by(id: params[:id])
     @film = @review.film
-    redirect_to film_path(@film)
+
+    if request.xhr?
+      render template: '/comments/_all_comments', layout: false, locals: { comment: @comment, review: @review }
+    else
+      redirect_to film_path(@film)
+    end
   end
 
   def update
