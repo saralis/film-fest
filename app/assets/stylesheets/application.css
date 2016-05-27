@@ -6,7 +6,8 @@ body {
   background-image: url("http://www.ecufilmfestival.com/wp-content/uploads/2010/11/godard-others-original.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #3f3f3f; }
+  background-color: #3f3f3f;
+  }
 
 ul {
   list-style: none; }
@@ -63,15 +64,49 @@ nav {
     font-family: 'BenchNine', sans-serif;
     font-size: 2.5em; }
 
-#cat_idx_container {
+    #container{
+        height:800%;
+  background: rgba(133, 133, 133, 0.38);
+    }
+#cat_idx_container{
+  margin-top:10%;
+
+}
+#cat_idx_sidebar {
   margin: 2%; }
-  #cat_idx_container h1 {
+  #cat_idx_sidebar h1 {
     color: #fff;
     transform: rotate(90deg);
     transform-origin: left top 0;
     margin-left: 5%;
     font-size: 8em; }
-  #cat_idx_container ul {
+
+#cat_idx_info {
+
+  text-align:right;
+}
+#cat_idx_info .rating{
+  color:#fff;
+  font-size:.45em;
+  margin-top:1%;
+  margin-bottom:2%;
+}
+
+#review_block{
+  color:#fff;
+  margin-left:8%;
+  margin-top:5%;
+}
+#review_block ul{
+  list-style:none;
+}
+#judge{
+  color:#ffe500;
+}
+#cat_idx_info h3{
+  color: #fff;
+}
+  #cat_idx_info ul {
     text-align: right;
     width: auto;
     font-size: 2em;
@@ -154,5 +189,62 @@ footer {
 .dropdown:hover .dropdown-content {
     display: block;
 
+}
+
+#film_show{
+  float:right;
+  text-align:right;
+  color:#fff;
+  width:35%;
+  margin-right:2%;
+  line-height:200%;
+}
+#film_show h1{
+  font-size:3em;
+}
+#review-container{
+  padding:2%;
+  height:800px;
+  width:500px;
+  background-color:rgba(133, 133, 133, 0.38);
+}
+
+#review-container a{
+  font-size:.8em;
+  color: #ff5c5c;
+  background-color:#fff;
+  padding:1%;
+  margin-top:5%;
+  border: 1px solid #ff5c5c;
+  border-radius:8px;
+}
+#top_nav{
+  width: 80%;
+}
+#top_nav ul{
+  padding-left:0;
+}
+#top_nav ul li{
+
+  width:auto;
+  display:inline-block;
+}
+#top_nav a{
+   font-size:.8em;
+  color: #ff5c5c;
+  background-color:#fff;
+  margin-top:5%;
+  border: 1px solid #ff5c5c;
+  border-radius:8px;
+
+}
+#ratings{
+  margin-top:50%;
+  margin-left:35%;
+  padding:3%;
+  width:50%;
+  background-color:#fff;
+  color:#333;
+  border-radius:8px;
 }
 /*# sourceMappingURL=application.css.map */
