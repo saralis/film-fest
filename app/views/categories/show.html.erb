@@ -1,22 +1,36 @@
-<div id="cat_idx_container"><h1> <%= @category.name.upcase %> </h1>
 
+<div id="container">
+  <div id="cat_idx_sidebar">
+    <h1> <%= @category.name.upcase %> </h1>
 
+</div>
+<div id="cat_idx_container">
+<div id="cat_idx_info">
 <ul>
   <% @rated_films.each do |film| %>
   <li><%= link_to film.name, film_path( film ) %></li>
-      <li>Audience Rating: <%= film.user_avg %></li>
+      <li class="rating"><i>audience rating: <%= film.user_avg %> stars</i></li>
       <%end%>
 
     <%@non_rated_films.each do | film | %>
       <li><%= link_to film.name, film_path( film ) %></li>
     <% end %>
 </ul>
-
-<h2> What people are saying about films in <%=@category.name %></h2>
-<% @reviews.each do |review| %>
-  <% review.each do | review | %>
-    <%= review.body %>
-  <% end %>
-<%end%>
 </div>
+</div>
+<div id="review_block">
+<h3> what people are saying about this year's <%=@category.name %> films:</h3>
 
+<% @reviews.each do |review| %>
+
+  <% review.each do | review | %>
+<ul>
+   <li> "<%= review.body %>"</li>
+
+</ul>
+<% end %>
+<%end%>
+
+
+</div>
+</div>

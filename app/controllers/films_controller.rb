@@ -12,9 +12,8 @@ class FilmsController < ApplicationController
   end
 
   def show
-
-    # @category = Category.find(params[:id])
     @film = Film.find(params[:id])
+    @stars = @film.user_avg.round if @film.user_avg != nil
     @reviews = Review.where( film_id: @film.id )
   end
 
