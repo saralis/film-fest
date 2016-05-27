@@ -28,3 +28,5 @@ end
 20.times do
   Review.create(title: Faker::StarWars.specie, body: Faker::StarWars.quote, film_id: Film.all.sample.id, user_id: User.all.sample.id )
 end
+
+User.create( first_name: 'Elan', last_name: 'Kvitko', email: 'elan@idknyc.com', password: '123abcabc', organizer: true )
