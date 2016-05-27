@@ -3,7 +3,7 @@
 <head>
   <title>FilmFest</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=BenchNine:400,700' rel='stylesheet' type='text/css'>
@@ -25,11 +25,12 @@
   <h3 id="title"> LES FILM FEST 2016</h3>
 </nav>
 <div id="border">
-  </div>
+</div>
 
 
 <%= yield %>
 
 <footer> contact | EELS production 2016 </footer>
+
 </body>
 </html>
