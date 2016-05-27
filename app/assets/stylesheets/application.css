@@ -231,11 +231,15 @@ footer {
 }
 #top_nav a{
    font-size:.8em;
+   padding:10px;
   color: #ff5c5c;
+  height:25px;
   background-color:#fff;
   margin-top:5%;
   border: 1px solid #ff5c5c;
   border-radius:8px;
+  margin:10px;
+
 
 }
 #ratings{
@@ -247,7 +251,17 @@ footer {
   color:#333;
   border-radius:8px;
 }
-
+#ratings form select{
+  background-color: #ff5c5c;
+  height:45px;
+}
+#ratings form input[type='submit']{
+  padding:3%;
+  background-color:#fff;
+  border-radius:5px;
+  box-shadow:none;
+  border:1px solid #ff5c5c;
+}
 #form_new{
   width:800px;
   margin: 0 auto;
