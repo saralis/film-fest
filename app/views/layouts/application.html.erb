@@ -15,29 +15,33 @@
   <h3> LES FILM FEST 2016</h3>
   <% if logged_in? %>
     <a href="/">Home |</a>
-    <% if current_user.organizer %>
-      <a href="/dashboard">Dashboard  |</a>
-    <% end %>
-    <a href="/logout">Logout |</a>
-  <% else %>
-    <a href="/">Home</a>
     <div class="dropdown">
-      <button class="dropbtn">Categories</button>
+      <button class="dropbtn">Categories |</button>
       <div class="dropdown-content">
         <% Category.all.each do | category | %>
           <%= link_to category.name, category_path( category ) %>
         <% end %>
       </div>
     </div>
-    <a href="/login">Login</a>
+    <% if current_user.organizer %>
+      <a href="/dashboard">Dashboard  |</a>
+    <% end %>
+    <a href="/logout">Logout |</a>
+  <% else %>
+    <a href="/">Home |</a>
+    <div class="dropdown">
+      <button class="dropbtn">Categories |</button>
+      <div class="dropdown-content">
+        <% Category.all.each do | category | %>
+          <%= link_to category.name, category_path( category ) %>
+        <% end %>
+      </div>
+    </div>
+    <a href="/login">Login |</a>
     <a href="/signup">Sign up</a>
   <% end %>
-<<<<<<< HEAD
-  <h3 id="title"> LES FILM FEST 2016</h3>
-
-=======
 </div>
->>>>>>> master
+
 </nav>
 <div id="border">
 </div>
