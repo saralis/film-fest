@@ -1,7 +1,6 @@
 class FilmsController < ApplicationController
   def index
-    @found_film = Film.find_by(name: params[:search].capitalize)
-
+    @found_film = Film.find_by(name: params[:search])
     if request.xhr?
       if @found_film != nil
         render template: '/films/_redirect', layout: false, locals: { film: @found_film }

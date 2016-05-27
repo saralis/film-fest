@@ -285,4 +285,21 @@ footer {
     width: 50%;
     background-color: #ffe500;
     border: 1px solid #ffe500; }
+
+div.slogan {
+  margin-top: -350px;
+  margin-right: 200px;
+  float: right;
+  color: #ffe500;
+}
+
+div.slogan h1 {
+  font-size: 50px;
+}
+
+div.slogan p {
+  font-size: 30px;
+  margin-top: -20px;
+  margin-left: 180px;
+}
 /*# sourceMappingURL=application.css.map */
