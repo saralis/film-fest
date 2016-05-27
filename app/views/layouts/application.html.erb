@@ -23,10 +23,14 @@
     <a href="/signup">Sign up</a>
   <% end %>
   <h3 id="title"> LES FILM FEST 2016</h3>
+
 </nav>
 <div id="border">
 </div>
-
+ <%= form_tag("/films", :method => 'get', id: 'search') do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Films" %>
+  <%= submit_tag "Search" %>
+  <% end %>
 
 <%= yield %>
 

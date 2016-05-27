@@ -1,13 +1,18 @@
 class FilmsController < ApplicationController
+  def index
+    @found_film = Film.find_by(name: params[:search].capitalize)
+
+    if request.xhr?
+      if @found_film != nil
+        render template: '/films/_redirect', layout: false, locals: { film: @found_film }
+      else
+        render template: '/films/_not_found', layout: false
+      end
+    end
+  end
+
   def show
-    # @films = Film.all
-  #   if params[:search]
-  #     @films = Film.search(params[:search]).order("created_at DESC")
-  #   else
-  #     @films= Film.all.order('created_at DESC')
-  #   end
-  #   @film = Film.find(params[:id])
-  # end
+
     # @category = Category.find(params[:id])
     @film = Film.find(params[:id])
     @reviews = Review.where( film_id: @film.id )
