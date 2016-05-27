@@ -247,4 +247,28 @@ footer {
   color:#333;
   border-radius:8px;
 }
+
+#form_new{
+  width:800px;
+  margin: 0 auto;
+  color:#fff;
+}
+#form_new form textarea{
+  width: 80%;
+  height:30px;
+  border-radius:10px;
+}
+#form_new form #body textarea{
+  width: 80%;
+  height:200px;
+}
+#form_new form input{
+  width:80%;
+}
+
+  #form_new form input[type='submit'] {
+    padding:3%;
+    width: 50%;
+    background-color: #ffe500;
+    border: 1px solid #ffe500; }
 /*# sourceMappingURL=application.css.map */

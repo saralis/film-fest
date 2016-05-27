@@ -1,4 +1,5 @@
-<h1> Create a new review </h1>
+<div id="form_new">
+<h1> create a new review </h1>
 
 <span>
  <%= form_for @review, :url => { :action => "create" } do |f| %>
@@ -7,7 +8,7 @@
   <%= f.label :title %><br>
   <%= f.text_area :title %>
 </p>
-<p>
+<p id="body">
   <%= f.label :body %><br>
   <%= f.text_area :body %>
   <%=f.hidden_field :user_id, value: current_user.id %>
@@ -18,3 +19,4 @@
 <% end %>
 </span>
 
+</div>
