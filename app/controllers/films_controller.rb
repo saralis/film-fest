@@ -1,15 +1,7 @@
 class FilmsController < ApplicationController
   def show
-    # @films = Film.all
-  #   if params[:search]
-  #     @films = Film.search(params[:search]).order("created_at DESC")
-  #   else
-  #     @films= Film.all.order('created_at DESC')
-  #   end
-  #   @film = Film.find(params[:id])
-  # end
-    # @category = Category.find(params[:id])
     @film = Film.find(params[:id])
+    @stars = @film.user_avg.round if @film.user_avg != nil
     @reviews = Review.where( film_id: @film.id )
   end
 
