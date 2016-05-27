@@ -1,6 +1,6 @@
-<h1> Films Show </h1>
+<div id="film_show">
 
-<h2> <%= @film.name %> </h2>
+<h1> <%= @film.name %> </h1>
 
 <p>
   <% if @stars == nil %>
@@ -24,7 +24,9 @@
 
 <%= @film.crew %><br>
 
+
 <% if @film.ratings %>
+<div id="ratings">
   <p>Average audience rating:<%= @film.user_avg %></p>
   <p>Average judge rating:<%= @film.judge_avg %></p>
 <%end%>
@@ -45,21 +47,28 @@
     Please <a href="/signup">Signup</a> or <a href="/login">Login</a> to rate this film
   </p>
 <% end %>
+</div>
+</div>
+<div id="top_nav">
+<% if logged_in? %>
+<ul>
+  <li><%= link_to 'create a new review', "/films/#{@film.id}/reviews/new" %>
+<% end %>
 
+<li><%= link_to 'back', "/categories/#{@film.category_id}"%></li>
+</ul>
+</div>
+<div id="review_block">
 <h2>Reviews for <%=@film.name %></h2>
 
 
-
-
-<h3> <%= @film.name %>'s Reviews: </h3>
-
 <div id="review-container">
   <% @reviews.each do |review| %>
-    <h1> Review Title: <%= review.title %> </h1>
-    <h3> Review Body: <%= review.body %> </h3>
-    <p> Left by: <%=review.user.first_name %> <%=review.user.last_name %>
+    <h3><%= review.title %> </h3>
+    <h4> "<%= review.body %> "</h4>
+    <p> left by: <%=review.user.first_name %> <%=review.user.last_name %>
       <% if review.user.judge %>
-        &#9733;<i>Judge review</i>
+        <span id="judge">&#9733;<i>judge review</i></span>
       <%end%>
     </p>
 
@@ -69,15 +78,16 @@
       <% end %>
 
       <% if logged_in? %>
-        <%= link_to 'Create Comment', "/reviews/#{review.id}/comments/new", class: 'new-comment' %>
+        <%= link_to 'create comment', "/reviews/#{review.id}/comments/new", class: 'new-comment' %>
       <% end %><br>
     </div>
   <% end %>
+
+
+
 </div>
 
 
-<% if logged_in? %>
-  <%= link_to 'Create a new review', "/films/#{@film.id}/reviews/new" %>
-<% end %><br>
 
-<%= link_to 'Back to Category list', "/categories/#{@film.category_id}"%>
+</div>
+
