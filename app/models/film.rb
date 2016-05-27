@@ -6,8 +6,8 @@ class Film < ActiveRecord::Base
   validates :name, :description, presence: true
 
   def self.search(search)
-    where("name ILIKE ?", "%#{search}")
-    where("description ILIKE ?", "%#{search}")
+    where("name ILIKE ?", "%#{search}%")
+    where("description ILIKE ?", "%#{search}%")
   end
 
   def user_avg

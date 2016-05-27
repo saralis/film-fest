@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   delete '/comments' => 'comments#destroy'
 
   resources :categories, only: [:index, :show]
-  resources :films, only: [:show]
+  resources :films, only: [:index, :show]
   resources :users, only: [:index, :new, :create, :show]
   resources :users do
     collection do

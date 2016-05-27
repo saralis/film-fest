@@ -1,4 +1,16 @@
 class FilmsController < ApplicationController
+  def index
+    @found_film = Film.find_by(name: params[:search].capitalize)
+
+    if request.xhr?
+      if @found_film != nil
+        render template: '/films/_redirect', layout: false, locals: { film: @found_film }
+      else
+        render template: '/films/_not_found', layout: false
+      end
+    end
+  end
+
   def show
     @film = Film.find(params[:id])
     @stars = @film.user_avg.round if @film.user_avg != nil
