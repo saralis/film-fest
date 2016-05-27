@@ -19,6 +19,14 @@
     <a href="/logout">Logout</a>
   <% else %>
     <a href="/">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Categories</button>
+      <div class="dropdown-content">
+        <% Category.all.each do | category | %>
+          <%= link_to category.name, category_path( category ) %>
+        <% end %>
+      </div>
+    </div>
     <a href="/login">Login</a>
     <a href="/signup">Sign up</a>
   <% end %>
