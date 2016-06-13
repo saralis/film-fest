@@ -1,4 +1,4 @@
-##LES Film Festival App built in Rails
+##LES Film Festival App built in Rails##
 
 Team members: Lisa Buch, Elan Kvitko, Saralis Rivera, Evan Druce
 
