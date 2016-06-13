@@ -1,28 +1,12 @@
-== README
+##LES Film Festival App built in Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Team members: Lisa Buch, Elan Kvitko, Saralis Rivera, Evan Druce
 
-Things you may want to cover:
+This app was built in 3 days, and was designed for both festival-goers and judges. Our stack was Ruby on Rails, PostgreSQL, and JavaScript, utilizing AJAX and JQuery.
 
-* Ruby version
+Judges and festival attendees themselves can browse films in each genre, rate them, and leave reviews. Within each category, films are ranked by the average star rating they've received.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Judges have special administrative privileges, such as announcing genre winners and deleting inappropriate comments/reviews that have been flagged.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
